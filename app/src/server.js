@@ -1,5 +1,5 @@
 import { ReactRouterSSR } from 'meteor/reactrouter:react-router-ssr';
-import 'IDEApp/server';
+import 'TodoApp/server';
 
 // Do server-rendering only in production
 // Otherwise, it will break the hot-reload

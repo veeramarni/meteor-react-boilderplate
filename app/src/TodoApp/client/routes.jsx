@@ -1,6 +1,9 @@
-import { Route } from 'react-router';
-import IDEApp from './components/IDEApp';
+import { Route, Router, browserHistory } from 'react-router';
+import App from './components/App';
+
 
 export default (
-    <Route path="/" component={IDEApp} />
+
+        <Route path="/(:filter)" component={App} />
+
 );

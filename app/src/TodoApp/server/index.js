@@ -1,4 +1,2 @@
-import './collections';
-import 'IDEApp/lib';
-import 'IDEApp/methods';
-import './publish';
+import './publish/publications';
+import 'TodoApp/methods/methods';
