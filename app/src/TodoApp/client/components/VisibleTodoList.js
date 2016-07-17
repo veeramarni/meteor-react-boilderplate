@@ -6,6 +6,7 @@ import { toggleComplete } from '../actions/actions';
 
 
 const getVisibleTodo = (todos, filter) => {
+    console.log(todos);
     switch(filter){
         case "all":
             return todos;
@@ -18,8 +19,8 @@ const getVisibleTodo = (todos, filter) => {
     }
 };
 
-const mapStateToProps = (state, props) => ({
-    todos: getVisibleTodo(state.todos, props.params.filter || 'all')
+const mapStateToProps = (state, ownProps) => ({
+    todos: getVisibleTodo(state.todoApp.todos, ownProps.params.filter || 'all')
 });
 
 const mapDispatchToProps = (dispatch) =>  ({
@@ -27,9 +28,9 @@ const mapDispatchToProps = (dispatch) =>  ({
 });
 
 
-const VisibleTodoList = withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TodoList));
+const VisibleTodoList = withRouter(connect({null,null,
+        mapStateToProps,
+        mapDispatchToProps
+})(TodoList));
 
 export default VisibleTodoList;

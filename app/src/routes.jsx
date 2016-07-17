@@ -2,15 +2,8 @@ import { Route, browserHistory } from 'react-router';
 //import { Provider } from 'react-redux';
 import { ReactRouterSSR } from 'meteor/reactrouter:react-router-ssr';
 import todoRoutes from 'TodoApp/client/routes';
-import configureStore from 'TodoApp/client/configureStore';
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import configureStore, { apolloClient } from 'TodoApp/client/configureStore';
 import { ApolloProvider } from 'react-apollo';
-
-const networkInterface = createNetworkInterface('/graphql');
-const client = new ApolloClient({
-    networkInterface
-});
-
 
 let store;
 
@@ -25,8 +18,8 @@ const dehydrateHook = () => store.getState();
 
 // Create a redux store and pass into the redux Provider wrapper
 const wrapperHook = app => {
-    store = configureStore(client);
-    return <ApolloProvider store={store} client={client}>{app}</ApolloProvider>
+    store = configureStore();
+    return <ApolloProvider store={store} client={apolloClient}>{app}</ApolloProvider>
 };
 
 const clientOptions = { historyHook, wrapperHook };

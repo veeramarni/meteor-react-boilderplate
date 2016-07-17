@@ -4,7 +4,9 @@
   "main": "src/server.js",
   "browser": "src/client.js",
   "author": "Admin Developers",
-  "dependencies¬": {
+  "dependencies": {
+    "apollo-client": "^0.4.1",
+    "apollo-server": "^0.1.5",
     "classnames": "^2.2.5",
     "codemirror": "^5.16.0",
     "diff-match-patch": "^1.0.0",
@@ -18,10 +20,10 @@
     "node-sass": "^3.8.0",
     "react": "^15.2.0",
     "react-addons-pure-render-mixin": "^15.0.0",
+    "react-apollo": "^0.3.19",
     "react-bootstrap": "^0.29.5",
     "react-dom": "^15.2.0",
     "react-mixin": "^3.0.5",
-    "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
@@ -55,13 +57,5 @@
     "redbox-react": "^1.2.0",
     "json-loader": "^0.5.4",
     "expose-loader": "^0.7.1"
-  },
-  "dependencies": {
-    "apollo-client": "^0.4.1",
-    "apollo-server": "^0.1.5",
-    "react": "^15.0.0",
-    "react-addons-pure-render-mixin": "^15.0.0",
-    "react-apollo": "^0.3.19",
-    "react-dom": "^15.0.0"
   }
 }

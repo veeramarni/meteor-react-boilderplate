@@ -1,19 +1,31 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import todoApp from './reducers';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
 
-const configureStore = (client) => {
-    const middlewares = [thunk];
+const networkInterface = createNetworkInterface('/graphql');
 
-    if (process.env.NODE_ENV !== 'production'){
+
+export const apolloClient = new ApolloClient({
+    networkInterface
+});
+
+
+const configureStore = () => {
+    const middlewares = [thunk, apolloClient.middleware()];
+    const rootReducer = combineReducers({
+        todoApp,
+        apollo: apolloClient.reducer()
+    });
+    if (process.env.NODE_ENV !== 'production') {
         middlewares.push(createLogger());
     }
 
     return createStore(
         rootReducer,
-        applyMiddleware(...middlewares, thunk.withExtraArgument(client))
+        applyMiddleware(...middlewares)
     );
 };
 
